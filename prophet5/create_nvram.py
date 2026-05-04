@@ -7,7 +7,7 @@
 #
 # The patch data was obtained from the operation manual. The switch states are
 # unambiguous. However, the resolution of the knobs in the diagram is ~20
-# positions, which is lower than the 128 possible stored values. In other words,
+# positions, which is lower than the 121 possible stored values. In other words,
 # the knob settings will not match the factory patches exactly.
 #
 #
@@ -342,7 +342,8 @@ def get_patches():
 
 
 def knob2byte(knob_value: float):
-	return round(127 * knob_value / 10)
+	# The max knob wiper voltage is 5V, which the ADC converts to 120.
+	return round(120 * knob_value / 10)
 
 
 @dataclass
